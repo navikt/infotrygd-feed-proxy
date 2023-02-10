@@ -21,3 +21,21 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# Dev files
+*.iml
+target/
+!.idea/
+.idea/*
+!.idea/saveactions_settings.xml
+
+!.idea/codeStyles/
+.idea/codeStyles/*
+!.idea/codeStyles/codeStyleConfig.xml
+!.idea/codeStyles/Project.xml
+
+!.idea/inspectionProfiles/
+.idea/inspectionProfiles/*
+!.idea/inspectionProfiles/profiles_settings.xml
+!.idea/inspectionProfiles/Project_Default.xml
+.DS_Store

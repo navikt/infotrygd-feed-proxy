@@ -1,0 +1,61 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: infotrygd-feed-proxy
+  namespace: teamfamilie
+  labels:
+    team: teamfamilie
+spec:
+  image: {{ image }}
+  liveness:
+    path: /internal/status/isAlive
+    initialDelay: 30
+    failureThreshold: 10
+  readiness:
+    path: /internal/status/isAlive
+    initialDelay: 30
+    failureThreshold: 10
+  prometheus:
+    enabled: true
+    path: /internal/prometheus
+  replicas:
+    min: 2
+    max: 3
+    cpuThresholdPercentage: 50
+  resources:
+    limits:
+      memory: 256Mi
+      cpu: 500m
+    requests:
+      memory: 256Mi
+      cpu: 500m
+  secureLogs:
+    enabled: true
+  ingresses:
+    - https://infotrygd-feed-proxy.dev.intern.nav.no
+    - https://infotrygd-feed-proxy.dev-fss-pub.nais.io
+  vault:
+    enabled: true
+    paths: #TODO
+      - kvPath: /serviceuser/data/dev/srvfamilie-ef-sak
+        mountPath: /var/run/secrets/serviceuser/efsak
+      - kvPath: /serviceuser/data/dev/srvfamilie-ef-person
+        mountPath: /var/run/secrets/serviceuser/personhendelse
+  azure:
+    application:
+      enabled: true
+      claims:
+        extra:
+          - azp_name
+  accessPolicy:
+    inbound:
+      rules:
+        - application: familie-baks-infotrygd-feed
+          namespace: teamfamilie
+          cluster: dev-gcp
+        - application: vedtaksfeed
+          namespace: tbd
+          cluster: dev-gcp
+  env:
+    - name: SPRING_PROFILES_ACTIVE
+      value: dev
