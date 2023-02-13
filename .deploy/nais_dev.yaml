@@ -6,7 +6,7 @@ metadata:
   labels:
     team: teamfamilie
 spec:
-  image: {{ image }}
+  image: { { image } }
   liveness:
     path: /internal/status/isAlive
     initialDelay: 30
@@ -36,9 +36,9 @@ spec:
     - https://infotrygd-feed-proxy.dev-fss-pub.nais.io
   vault:
     enabled: true
-    paths: #TODO
-      - kvPath: /serviceuser/data/dev/srvfamilie-ef-sak
-        mountPath: /var/run/secrets/serviceuser/efsak
+    paths:
+      - kvPath: /serviceuser/data/dev/srvinfotrygd-feed
+        mountPath: /secret/serviceuser
   azure:
     application:
       enabled: true
@@ -48,12 +48,9 @@ spec:
   accessPolicy:
     inbound:
       rules:
-        - application: familie-baks-infotrygd-feed
-          namespace: teamfamilie
-          cluster: dev-gcp
-        - application: vedtaksfeed
-          namespace: tbd
-          cluster: dev-gcp
+        - application: ida
+          namespace: traktor
+          cluster: prod-fss
   env:
     - name: SPRING_PROFILES_ACTIVE
       value: dev
