@@ -39,8 +39,6 @@ spec:
     paths: #TODO
       - kvPath: /serviceuser/data/dev/srvfamilie-ef-sak
         mountPath: /var/run/secrets/serviceuser/efsak
-      - kvPath: /serviceuser/data/dev/srvfamilie-ef-person
-        mountPath: /var/run/secrets/serviceuser/personhendelse
   azure:
     application:
       enabled: true
