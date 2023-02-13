@@ -6,7 +6,7 @@ metadata:
   labels:
     team: teamfamilie
 spec:
-  image: { { image } }
+  image: {{image}}
   liveness:
     path: /internal/status/isAlive
     initialDelay: 30
