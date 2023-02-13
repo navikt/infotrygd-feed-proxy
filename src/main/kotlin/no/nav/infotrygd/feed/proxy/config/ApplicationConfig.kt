@@ -20,7 +20,6 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Import
 import org.springframework.context.annotation.Primary
-import org.springframework.scheduling.annotation.EnableScheduling
 import org.springframework.web.client.RestOperations
 
 @SpringBootConfiguration
@@ -29,7 +28,6 @@ import org.springframework.web.client.RestOperations
 @EnableJwtTokenValidation(ignore = ["org.springframework", "org.springdoc"])
 @Import(RestTemplateAzure::class, RestTemplateSts::class, StsRestClient::class)
 @EnableOAuth2Client(cacheEnabled = true)
-@EnableScheduling
 class ApplicationConfig {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
