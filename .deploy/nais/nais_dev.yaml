@@ -38,7 +38,7 @@ spec:
     enabled: true
     paths:
       - kvPath: /serviceuser/data/dev/srvinfotrygd-feed
-        mountPath: /secret/serviceuser
+        mountPath: /var/run/secrets/serviceuser/srvinfotrygd-feed
   azure:
     application:
       enabled: true
