@@ -7,6 +7,7 @@ metadata:
     team: teamfamilie
 spec:
   image: {{image}}
+  port: 8087
   liveness:
     path: /internal/health/liveness
     initialDelay: 30
