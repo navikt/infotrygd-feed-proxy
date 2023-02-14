@@ -55,6 +55,11 @@ spec:
         - application: infotrygd-feed-konsument
           namespace: infotrygd
           cluster: dev-fss
+    outbound:
+      rules:
+        - application: familie-baks-infotrygd-feed
+          namespace: teamfamilie
+          cluster: dev-gcp
   env:
     - name: SPRING_PROFILES_ACTIVE
       value: dev
