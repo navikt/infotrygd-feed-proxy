@@ -41,14 +41,26 @@ spring:
     banner-mode: "off"
 
 management:
-  endpoint.health.show-details: always
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
   endpoints.web:
     exposure.include: info, health, metrics, prometheus
     base-path: "/internal"
-    path-mapping:
-      info: "status/isAlive"
   metrics.export.prometheus.enabled: true
-  metrics.web.server.request.autotime.enabled: true
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
+  metrics:
+    web:
+      server:
+        request:
+          autotime:
+            enabled: true
 
 springdoc:
   packagesToScan: no.nav.infotrygd.feed.proxy
