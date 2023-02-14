@@ -9,11 +9,11 @@ spec:
   image: {{image}}
   port: 8087
   liveness:
-    path: /internal/health/liveness
+    path: /internal/status/isAlive
     initialDelay: 30
     failureThreshold: 10
   readiness:
-    path: /internal/health/readyness
+    path: /internal/status/isAlive
     initialDelay: 30
     failureThreshold: 10
   prometheus:
