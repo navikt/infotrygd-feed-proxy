@@ -5,6 +5,7 @@ import no.nav.familie.http.config.RestTemplateSts
 import no.nav.familie.http.interceptor.ConsumerIdClientInterceptor
 import no.nav.familie.http.interceptor.InternLoggerInterceptor
 import no.nav.familie.http.interceptor.MdcValuesPropagatingClientInterceptor
+import no.nav.familie.http.sts.StsRestClient
 import no.nav.familie.kontrakter.felles.objectMapper
 import no.nav.familie.log.filter.LogFilter
 import no.nav.familie.log.filter.RequestTimeFilter
@@ -25,7 +26,7 @@ import org.springframework.web.client.RestOperations
 @ConfigurationPropertiesScan
 @ComponentScan("no.nav.infotrygd.feed.proxy", "no.nav.familie.sikkerhet")
 @EnableJwtTokenValidation(ignore = ["org.springframework", "org.springdoc"])
-@Import(RestTemplateAzure::class, RestTemplateSts::class)
+@Import(RestTemplateAzure::class, RestTemplateSts::class, StsRestClient::class)
 @EnableOAuth2Client(cacheEnabled = true)
 class ApplicationConfig {
 
