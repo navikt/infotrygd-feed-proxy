@@ -15,7 +15,7 @@ no.nav.security.jwt:
       cookie_name: azure_token
     sts:
       discoveryurl: ${STS_DISCOVERY_URL}
-      accepted_audience: ${GYLDIG_SERVICE_BRUKER}
+      accepted_audience: ${GYLDIGE_SERVICE_BRUKERE}
   client:
     registration:
       familie-baks-infotrygd-feed:
