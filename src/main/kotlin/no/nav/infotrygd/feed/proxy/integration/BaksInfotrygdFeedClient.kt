@@ -2,6 +2,7 @@ package no.nav.infotrygd.feed.proxy.integration
 
 import no.nav.familie.http.client.AbstractRestClient
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
@@ -13,7 +14,7 @@ import java.net.URI
 @Service
 class BaksInfotrygdFeedClient(
     @Value("\${BAKS_INFOTRYGD_FEED_URL}") private val baksInfotrygdFeedUri: URI,
-    restOperations: RestOperations
+    @Qualifier("azure") restOperations: RestOperations
 ) : AbstractRestClient(restOperations, "baksInfotrygdFeed") {
 
     fun hentBarnetrygdFeed(sekvensnummer: Long): String {
