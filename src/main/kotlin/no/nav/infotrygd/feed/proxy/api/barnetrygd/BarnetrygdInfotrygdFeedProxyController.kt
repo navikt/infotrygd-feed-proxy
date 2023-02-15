@@ -3,6 +3,7 @@ package no.nav.infotrygd.feed.proxy.api.barnetrygd
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
 import no.nav.infotrygd.feed.proxy.integration.BaksInfotrygdFeedClient
+import no.nav.infotrygd.feed.proxy.security.StsValidator
 import no.nav.security.token.support.core.api.ProtectedWithClaims
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
@@ -15,7 +16,10 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/barnetrygd")
 @ProtectedWithClaims(issuer = "sts")
-class BarnetrygdInfotrygdFeedProxyController(private val baksInfotrygdFeedClient: BaksInfotrygdFeedClient) {
+class BarnetrygdInfotrygdFeedProxyController(
+    private val baksInfotrygdFeedClient: BaksInfotrygdFeedClient,
+    private val stsValidator: StsValidator
+) {
 
     @Operation(
         summary = "Hent liste med hendelser.",
@@ -28,6 +32,7 @@ class BarnetrygdInfotrygdFeedProxyController(private val baksInfotrygdFeedClient
         sekvensnummer: Long
     ): ResponseEntity<String> {
         return Result.runCatching {
+            stsValidator.validateSts("srvinfotrygd-feed")
             baksInfotrygdFeedClient.hentBarnetrygdFeed(sekvensnummer = sekvensnummer)
         }.fold(
             onSuccess = { feed ->
