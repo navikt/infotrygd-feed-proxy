@@ -62,5 +62,8 @@ CLUSTER_ENV: prod
 BAKS_INFOTRYGD_FEED_URL: https://familie-baks-infotrygd-feed.intern.nav.no
 VEDTAKSFEED_URL: https://vedtaksfeed.intern.nav.no
 
-GYLDIGE_SERVICE_BRUKERE: srvinfotrygd-feed #TOO
+STS_PREFIX: http://security-token-service.default
+STS_DISCOVERY_SUFFIX: /rest/v1/sts/.well-known/openid-configuration
+STS_URL: ${STS_PREFIX}/rest/v1/sts/token # Trenges av RestTemplateSTS
+GYLDIGE_SERVICE_BRUKERE: srvinfotrygd-feed
 STS_DISCOVERY_URL: https://security-token-service.nais.adeo.no/rest/v1/sts/.well-known/openid-configuration
