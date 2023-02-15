@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/barnetrygd")
-@ProtectedWithClaims(issuer = "azuread")
+@ProtectedWithClaims(issuer = "sts")
 class BarnetrygdInfotrygdFeedProxyController(private val baksInfotrygdFeedClient: BaksInfotrygdFeedClient) {
 
     @Operation(
