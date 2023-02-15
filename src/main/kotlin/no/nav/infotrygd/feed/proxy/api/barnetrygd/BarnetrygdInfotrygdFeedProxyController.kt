@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
 import no.nav.infotrygd.feed.proxy.integration.BaksInfotrygdFeedClient
 import no.nav.infotrygd.feed.proxy.security.StsValidator
+import no.nav.security.token.support.core.api.Protected
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/barnetrygd")
+@Protected
 class BarnetrygdInfotrygdFeedProxyController(
     private val baksInfotrygdFeedClient: BaksInfotrygdFeedClient,
     private val stsValidator: StsValidator
