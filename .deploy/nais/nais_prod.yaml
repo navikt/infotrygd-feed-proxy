@@ -57,6 +57,9 @@ spec:
         - application: familie-baks-infotrygd-feed
           namespace: teamfamilie
           cluster: prod-gcp
+        - application: vedtaksfeed
+          namespace: tbd
+          cluster: prod-gcp
   env:
     - name: SPRING_PROFILES_ACTIVE
       value: prod
