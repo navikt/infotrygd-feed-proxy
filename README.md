@@ -1,3 +1,6 @@
+Dette prosjektet er arkivert. Viderutvikling skjer i:
+https://github.com/navikt/infotrygd-feed-proxy-v2
+
 # infotrygd-feed-proxy
 
 Applikasjon som kan brukes mellom gcp<->on-prem for kommunikasjon med infotrygd tjenester. Eks. for infotrygd som kaller 
